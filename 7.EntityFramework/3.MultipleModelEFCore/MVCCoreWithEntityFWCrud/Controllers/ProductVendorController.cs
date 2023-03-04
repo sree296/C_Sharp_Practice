@@ -7,7 +7,7 @@ namespace MultipleModelEFCore.Controllers
 {
     public class ProductVendorController : Controller
     {
-        IVendorInfoRepository _obj = new VendorInfoRepository();
+        IProductInfoRepository _obj = new ProductInfoRepository();
         [HttpGet]
         public IActionResult GetProductsAndVendors()
         {

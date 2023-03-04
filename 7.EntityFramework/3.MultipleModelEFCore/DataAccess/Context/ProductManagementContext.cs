@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Context
 {
-    public class VendorManagementContext : DbContext
+    public class ProductManagementContext : DbContext
     {
         public DbSet<VendorInfo> VendorDetailData { get; set; }
         public DbSet<Product> ProductData { get; set; }

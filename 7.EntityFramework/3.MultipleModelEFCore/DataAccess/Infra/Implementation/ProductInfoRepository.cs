@@ -4,9 +4,9 @@ using DataAccess.Models;
 
 namespace DataAccess.Infra.Implementation
 {
-    public class VendorInfoRepository : IVendorInfoRepository
+    public class ProductInfoRepository : IProductInfoRepository
     {
-        VendorManagementContext _context = new VendorManagementContext();
+        ProductManagementContext _context = new ProductManagementContext();
         
         public ProductVendor GetProductVendors()
         {

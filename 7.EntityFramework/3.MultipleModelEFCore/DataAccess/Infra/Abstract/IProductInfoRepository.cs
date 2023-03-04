@@ -2,7 +2,7 @@
 
 namespace DataAccess.Infra.Abstract
 {
-    public interface IVendorInfoRepository
+    public interface IProductInfoRepository
     {
         ProductVendor GetProductVendors();
     }

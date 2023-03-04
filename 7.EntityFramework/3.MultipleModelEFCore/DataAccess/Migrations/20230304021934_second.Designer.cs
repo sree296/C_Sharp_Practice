@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(VendorManagementContext))]
+    [DbContext(typeof(ProductManagementContext))]
     [Migration("20230304021934_second")]
     partial class second
     {

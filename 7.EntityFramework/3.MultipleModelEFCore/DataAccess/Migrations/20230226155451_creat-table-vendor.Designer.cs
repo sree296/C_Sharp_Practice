@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(VendorManagementContext))]
+    [DbContext(typeof(ProductManagementContext))]
     [Migration("20230226155451_creat-table-vendor")]
     partial class creattablevendor
     {
