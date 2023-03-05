@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataAccess.Models.PurchaseDetails>
+﻿@model IEnumerable<DataAccess.Models.SaleDetails>
 
 @{
     Layout = null;
@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>MVC Core CRUD | Entity Framework</title>
+    <title>Index</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
@@ -34,6 +34,7 @@
         td, th {
             padding: 5px 15px;
         }
+
         .well {
             margin: 25px 0;
         }
@@ -56,25 +57,24 @@
                 <a class="nav-link text-dark" asp-area="" asp-controller="StockInfo" asp-action="GetStockAndPurchaseDetails">Stock</a>
             </li>
             <li class="nav-item">
-                Purchase List
+                <a class="nav-link text-dark" asp-area="" asp-controller="PurchaseData" asp-action="Index">Purchase List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="SalesData" asp-action="Index">Sales List</a>
+                Sales List
             </li>
-
         </ul>
     </div>
     <div class="well">
-        <h4>Purchase List</h4>
+        <h4>Sales List</h4>
         <hr />
         <p>
             <a asp-action="Create">Create New</a>
         </p>
-            <table class="table">
+        <table class="table">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.PurchaseId)
+                        @Html.DisplayNameFor(model => model.SalesID)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.ProductId)
@@ -83,10 +83,10 @@
                         @Html.DisplayNameFor(model => model.ProductName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PurchaseDate)
+                        @Html.DisplayNameFor(model => model.SalesDate)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PurchaseQty)
+                        @Html.DisplayNameFor(model => model.SalesQty)
                     </th>
                     <th></th>
                 </tr>
@@ -95,7 +95,7 @@
         @foreach (var item in Model) {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PurchaseId)
+                        @Html.DisplayFor(modelItem => item.SalesID)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ProductId)
@@ -104,15 +104,15 @@
                         @Html.DisplayFor(modelItem => item.ProductName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PurchaseDate)
+                        @Html.DisplayFor(modelItem => item.SalesDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PurchaseQty)
+                        @Html.DisplayFor(modelItem => item.SalesQty)
                     </td>
                     <td>
-                                @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseId  }) |
-                                @Html.ActionLink("Details", "Details", new { id=item.PurchaseId  }) |
-                                @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseId  })
+                                @Html.ActionLink("Edit", "Edit", new {  id=item.SalesID  }) |
+                                @Html.ActionLink("Details", "Details", new {  id=item.SalesID  }) |
+                                @Html.ActionLink("Delete", "Delete", new {  id=item.SalesID  })
                     </td>
                 </tr>
         }

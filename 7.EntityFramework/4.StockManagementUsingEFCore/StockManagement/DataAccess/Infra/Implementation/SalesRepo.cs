@@ -10,34 +10,34 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Infra.Implementation
 {
-    public class PurchaseRepo : IPurchaseRepoInterface
+    public class SalesRepo : ISalesRepoInterface
     {
         StockManagementContext _context = new StockManagementContext();
 
-        public List<PurchaseDetails> GetAllPurchases()
+        public List<SaleDetails> GetAllSales()
         {
-            List<PurchaseDetails> purchaseList = new List<PurchaseDetails>();
+            List<SaleDetails> salesList = new List<SaleDetails>();
 
             try
             {
-                purchaseList = _context.PurchaseDetailData.ToList();
+                salesList = _context.SalesData.ToList();
             }
             catch (Exception ex)
             {
                 string str = ex.Message;
             }
 
-            return purchaseList;
+            return salesList;
         }
 
 
-        public PurchaseDetails GetPurchaseDetailsById(int purchaseId)
+        public SaleDetails GetSalesDetailsById(int saleId)
         {
-            PurchaseDetails purchaseObj = new PurchaseDetails();
+            SaleDetails saleObj = new SaleDetails();
 
             try
             {
-                purchaseObj = _context.PurchaseDetailData.FirstOrDefault(x => x.PurchaseId == purchaseId);
+                saleObj = _context.SalesData.FirstOrDefault(x => x.SalesID == saleId);
             }
             catch (Exception ex)
             {
@@ -45,19 +45,19 @@ namespace DataAccess.Infra.Implementation
             }
 
 
-            return purchaseObj;
+            return saleObj;
         }
 
-        public string InsertPurchaseDetails(PurchaseDetails purchase)
+        public string InsertSalesDetails(SaleDetails salesObj)
         {
             string responseMsg = string.Empty;
 
             try
             {
-                _context.PurchaseDetailData.Add(purchase);
+                _context.SalesData.Add(salesObj);
                 _context.SaveChanges();
 
-                if (purchase.PurchaseId > 0)
+                if (salesObj.SalesID > 0)
                 {
                     responseMsg = "success";
                 }
@@ -74,19 +74,19 @@ namespace DataAccess.Infra.Implementation
             return responseMsg;
         }
 
-        public string UpdatePurchaseDetails(PurchaseDetails purchase)
+        public string UpdateSalesDetails(SaleDetails salesObj)
         {
             string responseMsg = string.Empty;
 
             try
             {
-                PurchaseDetails currentPurchase = _context.PurchaseDetailData.FirstOrDefault(x => x.PurchaseId == purchase.PurchaseId);
-                if (currentPurchase != null)
+                SaleDetails currentSale = _context.SalesData.FirstOrDefault(x => x.SalesID == salesObj.SalesID);
+                if (currentSale != null)
                 {
-                    currentPurchase.ProductId = purchase.ProductId;
-                    currentPurchase.ProductName = purchase.ProductName;
-                    currentPurchase.PurchaseDate = purchase.PurchaseDate;
-                    currentPurchase.PurchaseQty = purchase.PurchaseQty;
+                    currentSale.SalesID = salesObj.SalesID;
+                    currentSale.ProductName = salesObj.ProductName;
+                    currentSale.SalesDate = salesObj.SalesDate;
+                    currentSale.SalesQty = salesObj.SalesQty;
                     _context.SaveChanges();
 
                     responseMsg = "success";
@@ -106,15 +106,15 @@ namespace DataAccess.Infra.Implementation
 
             return responseMsg;
         }
-        public string DeletePurchaseDetailsById(int purchaseId)
+        public string DeleteSalesDetailsById(int salesId)
         {
             string responseMsg = string.Empty;
             try
             {
-                PurchaseDetails currentPurchase = _context.PurchaseDetailData.FirstOrDefault(x => x.PurchaseId == purchaseId);
-                if (currentPurchase != null)
+                SaleDetails currentSales = _context.SalesData .FirstOrDefault(x => x.SalesID == salesId);
+                if (currentSales != null)
                 {
-                    _context.PurchaseDetailData.Remove(currentPurchase);
+                    _context.SalesData.Remove(currentSales);
                     _context.SaveChanges();
                     responseMsg = "success";
                 }

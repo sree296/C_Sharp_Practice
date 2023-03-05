@@ -12,8 +12,23 @@ namespace DataAccess.Models
     {
        [Key]
        public int SalesID { get; set; }
-       public int ProductId { get; set; }
-       public DateTime? SalesDate { get; set; }
-       public int SalesQty { get; set; }
+
+        [Required]
+        [RegularExpression(@"[0-9]+", ErrorMessage = "Invalid Id")]
+        [Display(Name = "Product Id")]
+        public int ProductId { get; set; }
+
+       [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "Invalid Produt Name")]
+        [Display(Name = "Product Name")]
+        public string ProductName { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Sales Date")]
+        public DateTime? SalesDate { get; set; }
+
+        [Required]
+        [RegularExpression(@"[0-9]+", ErrorMessage = "Invalid Quantity")]
+        [Display(Name = "Purchase Qty")]
+        public int SalesQty { get; set; }
     }
 }
