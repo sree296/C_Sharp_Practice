@@ -73,7 +73,7 @@
                     <td>@purchase.ProductName</td>
                     @{
                         var salesObj = Model.SaleList.FirstOrDefault(x => x.ProductId == purchase.ProductId);
-                        var stockQty = purchase.PurchaseQty - salesObj.SalesQty;
+                        var stockQty = purchase.PurchaseQty - (salesObj == null ? 0 : salesObj.SalesQty);
                         <td>@stockQty</td>
                      }
                 </tr>
