@@ -54,6 +54,10 @@ namespace DataAccess.Infra.Implementation
 
             try
             {
+                Products currnetProd = _context.ProductsData.FirstOrDefault(x => x.ProductId == purchase.ProductId);
+                currnetProd.StockQty = purchase.PurchaseQty;
+
+                _context.ProductsData.Update(currnetProd);
                 _context.PurchaseDetailData.Add(purchase);
                 _context.SaveChanges();
 
@@ -81,12 +85,16 @@ namespace DataAccess.Infra.Implementation
             try
             {
                 PurchaseDetails currentPurchase = _context.PurchaseDetailData.FirstOrDefault(x => x.PurchaseId == purchase.PurchaseId);
+
                 if (currentPurchase != null)
                 {
                     currentPurchase.ProductId = purchase.ProductId;
                     currentPurchase.ProductName = purchase.ProductName;
                     currentPurchase.PurchaseDate = purchase.PurchaseDate;
                     currentPurchase.PurchaseQty = purchase.PurchaseQty;
+
+                    Products currnetProd = _context.ProductsData.FirstOrDefault(x => x.ProductId == purchase.ProductId);
+                    currnetProd.StockQty = purchase.PurchaseQty;
                     _context.SaveChanges();
 
                     responseMsg = "success";

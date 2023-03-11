@@ -54,6 +54,10 @@ namespace DataAccess.Infra.Implementation
 
             try
             {
+                Products currnetProd = _context.ProductsData.FirstOrDefault(x => x.ProductId == salesObj.ProductId);
+                currnetProd.StockQty = currnetProd.StockQty - salesObj.SalesQty;
+
+                _context.ProductsData.Update(currnetProd);
                 _context.SalesData.Add(salesObj);
                 _context.SaveChanges();
 
@@ -81,8 +85,12 @@ namespace DataAccess.Infra.Implementation
             try
             {
                 SaleDetails currentSale = _context.SalesData.FirstOrDefault(x => x.SalesID == salesObj.SalesID);
+                PurchaseDetails currentPurchase = _context.PurchaseDetailData.FirstOrDefault(x => x.ProductId == salesObj.ProductId);
                 if (currentSale != null)
                 {
+                    Products currnetProd = _context.ProductsData.FirstOrDefault(x => x.ProductId == salesObj.ProductId);
+                    currnetProd.StockQty = currentPurchase.PurchaseQty - salesObj.SalesQty;
+
                     currentSale.SalesID = salesObj.SalesID;
                     currentSale.ProductName = salesObj.ProductName;
                     currentSale.SalesDate = salesObj.SalesDate;

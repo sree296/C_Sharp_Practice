@@ -11,5 +11,6 @@ namespace DataAccess.ViewModel
     {
         public List<PurchaseDetails> PurchaseList { get; set; }
         public List<SaleDetails> SaleList { get; set; }
+        public List<Products> ProductList { get; set; }
     }
 }

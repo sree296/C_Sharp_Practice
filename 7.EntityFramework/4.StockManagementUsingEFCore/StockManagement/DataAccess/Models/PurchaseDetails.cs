@@ -19,7 +19,7 @@ namespace DataAccess.Models
 
        [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "Invalid Product Name")]
         [Display(Name = "Product Name")]
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Purchase Date")]

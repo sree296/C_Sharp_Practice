@@ -13,6 +13,8 @@ namespace DataAccess.Context
         public DbSet<PurchaseDetails> PurchaseDetailData { get; set; }
         public DbSet<SaleDetails> SalesData { get; set; }
 
+        public DbSet<Products> ProductsData { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
